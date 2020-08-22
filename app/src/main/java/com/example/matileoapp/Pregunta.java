@@ -3,7 +3,7 @@ package com.example.matileoapp;
 import java.util.ArrayList;
 
 public class Pregunta {
-    String pregunta;
+    int pregunta;
     String simbolo;
     ArrayList<Pregunta> preguntas;
     int numero1;
