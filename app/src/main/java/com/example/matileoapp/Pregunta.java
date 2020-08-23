@@ -5,18 +5,17 @@ import java.util.ArrayList;
 public class Pregunta {
     int pregunta;
     String simbolo;
-    ArrayList<Pregunta> preguntas;
     int numero1;
     int numero2;
     int solucion;
 
-    public Pregunta(int numero1, int numero2, String simbolo){
+    public Pregunta(int pregunta, int numero1, int numero2){
         this.numero1 = numero1;
         this.numero2 = numero2;
-        this.simbolo = simbolo;
+        this.pregunta = pregunta;
     }
 
-    void formular[]{
+    void formular(){
         switch (pregunta) {
             case 1:
                 simbolo = "x";
