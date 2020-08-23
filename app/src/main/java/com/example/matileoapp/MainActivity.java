@@ -24,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
         respuestaEdit = findViewById(R.id.respuestaEdit);
         respuestaBoton = findViewById(R.id.respuestaBoton);
         hacerPregunta();
-        
+
     }
 
     protected void hacerPregunta(){
 
         for(int i = 0; i < 20; i++){
-            random1= (int) (Math.random()*10 + 1);
-            random2 = (int) (Math.random()*10 + 1);
-            random3 = (int) (Math.random()*10 + 1);
+            random1= (int) (Math.random()*(10 - 1) + 1);
+            random2 = (int) (Math.random()*(10 - 1) + 1);
+            random3 = (int) (Math.random()*3 + 1);
             preguntas.add(new Pregunta(random3,random1,random2));
         }
     }

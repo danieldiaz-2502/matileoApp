@@ -17,19 +17,19 @@ public class Pregunta {
 
     void formular(){
         switch (pregunta) {
-            case 1:
+            case 0:
                 simbolo = "x";
                 solucion = numero1 * numero2;
                 break;
-            case 2:
+            case 1:
                 simbolo = "/";
                 solucion = numero1/numero2;
                 break;
-            case 3:
+            case 2:
                 simbolo = "+";
                 solucion = numero1+numero2;
                 break;
-            case 4:
+            case 3:
                 simbolo = "-";
                 solucion = numero1-numero2;
                 break;
