@@ -17,23 +17,38 @@ public class MainActivity extends AppCompatActivity {
     private EditText respuestaEdit;
     private Button respuestaBoton;
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
-    private String ejercicio;
     private int numero1;
     private int numero2;
     private int pregunta;
+    private TextView contador;
+    private TextView tiempillo;
+    private int numeroXD;
+    private int time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        time = 15;
         setContentView(R.layout.activity_main);
         enunciado = findViewById(R.id.enunciado);
+        contador = findViewById(R.id.contador);
+        tiempillo = findViewById(R.id.tiempillo);
         respuestaEdit = findViewById(R.id.respuestaEdit);
         respuestaBoton = findViewById(R.id.respuestaBoton);
+        tiempo();
+        tiempillo.setText(time + " ");
         respuestaBoton.setOnClickListener(
                 (v) -> {
                     String respuesta = respuestaEdit.getText().toString();
                     hacerPregunta();
+                    for(int i = 0; i < preguntas.size(); i++) {
+                        if (respuesta.equals(Integer.toString(preguntas.get(i).getSolucion()))) {
+                            numeroXD = numeroXD + 1;
+                        } else{
+                            numeroXD = numeroXD - 1;
+                        }
+                    }
+                    contador.setText(numeroXD + " ");
                 }
         );
 
@@ -50,4 +65,23 @@ public class MainActivity extends AppCompatActivity {
             enunciado.setText(preguntas.get(i).retornar() + " ");
         }
     }
-}
+    public void tiempo() {
+        new Thread(
+            () -> {
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    time = time - 1;
+                    runOnUiThread(
+                            () -> {
+                                tiempillo.setText(""+ time);
+                            }
+                    );
+                }
+            }
+            ).start();
+        }
+    }
