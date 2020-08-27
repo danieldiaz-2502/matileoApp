@@ -17,10 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText respuestaEdit;
     private Button respuestaBoton;
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
-    private int random1;
-    private int random2;
-    private int random3;
     private String ejercicio;
+    int random1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,22 +28,21 @@ public class MainActivity extends AppCompatActivity {
         respuestaBoton = findViewById(R.id.respuestaBoton);
         respuestaBoton.setOnClickListener(
                 (v) -> {
+                    hacerPregunta();
                     String respuesta = respuestaEdit.getText().toString();
                     hacerPregunta();
                     Toast.makeText(this, random1 + " ", Toast.LENGTH_LONG).show();
+                    enunciado.setText( "random2" + " ");
                 }
         );
-        enunciado.setText(random1 + random2);
 
     }
 
     protected void hacerPregunta(){
 
-        for(int i = 0; i < 20; i++){
-            random1= (int) (Math.random()*(10 - 1) + 1);
-            random2 = (int) (Math.random()*(10 - 1) + 1);
-            random3 = (int) (Math.random()*3 + 1);
-            preguntas.add(new Pregunta(random3,random1,random2));
+        for(int i = 0; i < preguntas.size(); i++){
+            preguntas.add(new Pregunta());
+            preguntas.get(i).formular();
         }
     }
 }

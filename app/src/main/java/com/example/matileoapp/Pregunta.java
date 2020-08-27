@@ -9,29 +9,26 @@ public class Pregunta {
     int numero2;
     int solucion;
 
-    public Pregunta(int pregunta, int numero1, int numero2){
-        this.numero1 = numero1;
-        this.numero2 = numero2;
-        this.pregunta = pregunta;
+    public Pregunta(){
+        this.numero1= (int) (Math.random()*20);
+        this.numero2 = (int) (Math.random()*20);
+        this.pregunta = (int) (Math.random()*4);
+        this.solucion = solucion;
     }
 
     void formular(){
         switch (pregunta) {
             case 0:
-                simbolo = "x";
-                solucion = numero1 * numero2;
+                solucion = numero1*numero2;
                 break;
             case 1:
-                simbolo = "/";
                 solucion = numero1/numero2;
                 break;
             case 2:
-                simbolo = "+";
-                solucion = numero1+numero2;
+                solucion = numero1 + numero2;
                 break;
             case 3:
-                simbolo = "-";
-                solucion = numero1-numero2;
+                solucion = numero1 - numero2;
                 break;
         }
     }
