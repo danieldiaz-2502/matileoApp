@@ -18,31 +18,36 @@ public class MainActivity extends AppCompatActivity {
     private Button respuestaBoton;
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
     private String ejercicio;
-    int random1;
+    private int numero1;
+    private int numero2;
+    private int pregunta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        enunciado = findViewById(R.id.enunciado);
         respuestaEdit = findViewById(R.id.respuestaEdit);
         respuestaBoton = findViewById(R.id.respuestaBoton);
         respuestaBoton.setOnClickListener(
                 (v) -> {
-                    hacerPregunta();
                     String respuesta = respuestaEdit.getText().toString();
                     hacerPregunta();
-                    Toast.makeText(this, random1 + " ", Toast.LENGTH_LONG).show();
-                    enunciado.setText( "random2" + " ");
                 }
         );
 
     }
 
-    protected void hacerPregunta(){
+    public void hacerPregunta(){
 
+        numero1 = (int) (Math.random()*20);
+        numero2 = (int) (Math.random()*20);
+        pregunta = (int) (Math.random()*4);
+        preguntas.add(new Pregunta(numero1,numero2,pregunta));
         for(int i = 0; i < preguntas.size(); i++){
-            preguntas.add(new Pregunta());
             preguntas.get(i).formular();
+            enunciado.setText(preguntas.get(i).retornar() + " ");
         }
     }
 }
