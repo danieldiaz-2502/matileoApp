@@ -3,6 +3,7 @@ package com.example.matileoapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private int pregunta;
     private TextView contador;
     private TextView tiempillo;
-    private int numeroXD;
+    private int numeroXD = 0;
     private int time;
 
     @Override
@@ -36,19 +37,26 @@ public class MainActivity extends AppCompatActivity {
         respuestaEdit = findViewById(R.id.respuestaEdit);
         respuestaBoton = findViewById(R.id.respuestaBoton);
         tiempo();
+        hacerPregunta();
         tiempillo.setText(time + " ");
         respuestaBoton.setOnClickListener(
                 (v) -> {
+                    time = 15;
                     String respuesta = respuestaEdit.getText().toString();
                     hacerPregunta();
                     for(int i = 0; i < preguntas.size(); i++) {
                         if (respuesta.equals(Integer.toString(preguntas.get(i).getSolucion()))) {
                             numeroXD = numeroXD + 1;
+                            Log.e("puntaje", "lo hiciste bien");
+                        } else if (numeroXD <= 0){
+                            numeroXD = 0;
                         } else{
                             numeroXD = numeroXD - 1;
                         }
+                        contador.setText(Integer.toString(numeroXD));
                     }
-                    contador.setText(numeroXD + " ");
+                    Log.e("respuesta", respuesta);
+
                 }
         );
 
@@ -56,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void hacerPregunta(){
 
-        numero1 = (int) (Math.random()*20);
-        numero2 = (int) (Math.random()*20);
+        numero1 = (int) (Math.random()*4);
+        numero2 = (int) (Math.random()*4);
         pregunta = (int) (Math.random()*4);
         preguntas.add(new Pregunta(numero1,numero2,pregunta));
         for(int i = 0; i < preguntas.size(); i++){
