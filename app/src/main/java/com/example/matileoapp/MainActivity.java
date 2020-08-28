@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void hacerPregunta(){
 
-        numero1 = (int) (Math.random()*4);
-        numero2 = (int) (Math.random()*4);
+        numero1 = (int) (Math.random()*20);
+        numero2 = (int) (Math.random()*20);
         pregunta = (int) (Math.random()*4);
         preguntas.add(new Pregunta(numero1,numero2,pregunta));
         for(int i = 0; i < preguntas.size(); i++){
