@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
                             Log.e("puntaje", "lo hiciste bien");
                         } else if (numeroXD <= 0){
                             numeroXD = 0;
-                        } else{
-                            numeroXD = numeroXD - 1;
                         }
                         contador.setText(Integer.toString(numeroXD));
                     }
